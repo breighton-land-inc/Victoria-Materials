@@ -1,0 +1,10 @@
+{
+  "name": "victoria-materials",
+  "homepage": "https://breighton-land-inc.github.io/Victoria-Materials",
+  "scripts": {
+    "deploy": "gh-pages -d ."
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
