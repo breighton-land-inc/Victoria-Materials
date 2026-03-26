@@ -109,12 +109,6 @@ section {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .bg-video {
-        object-fit: cover;
-        height: 100%;
-    }
-}
 
 
 @media (max-width: 768px) {
@@ -189,9 +183,10 @@ section {
     }
 
     .modal-content {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+        width: 90%;
+        height: 60%;  
+        margin: 20% auto; 
+        border-radius: 15px;
     }
 
     .slider-wrapper {
@@ -213,6 +208,13 @@ section {
 
 .model-slide .slide.active {
     display: block;
+}
+@media (max-width: 768px) {
+    .modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 section::before {
@@ -239,20 +241,15 @@ section::before {
     justify-content: center;
 }
 
-.bg-video {
+
+.bg-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
-}
-
-#home {
-    position: relative;
-    overflow: hidden;
-    background: #000;
+    z-index: 0; /* FIXED */
 }
 
 #home .hero-container {
@@ -381,7 +378,6 @@ section::before {
 
 .burger-menu {
     position: relative;
-    /* or absolute if needed */
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -415,7 +411,6 @@ section::before {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* --- SIDE NAV MODERN DESIGN WITHOUT X --- */
 .side-nav {
     height: 100vh;
     width: 0;
@@ -424,14 +419,12 @@ section::before {
     top: 0;
     right: 0;
     background: rgba(30, 30, 30, 0.95);
-    /* semi-transparent dark background */
     backdrop-filter: blur(15px);
-    /* glassy effect */
     overflow-x: hidden;
     transition: width 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 120px;
     align-items: center;
     border-left: 2px solid rgba(255, 255, 255, 0.1);
     border-top-left-radius: 20px;
@@ -439,13 +432,10 @@ section::before {
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
 }
 
-/* ACTIVE STATE */
 .side-nav.active {
-    width: 280px;
-    /* partial screen width */
+    width: 200px;
 }
 
-/* NAV LINKS */
 .side-nav-links {
     display: flex;
     flex-direction: column;
@@ -473,11 +463,9 @@ section::before {
 .side-nav-links a:hover {
     color: var(--gold);
     background: rgba(255, 255, 255, 0.15);
-    /* slightly brighter on hover */
     transform: translateX(5px);
 }
 
-/* Remove the close button completely */
 .side-nav .close-btn {
     display: none;
 }
@@ -493,12 +481,10 @@ section::before {
         2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Default (Desktop stays same) */
 .luxury-card {
     background: #fff;
 }
 
-/* Mobile App Style */
 @media (max-width: 768px) {
     .luxury-card {
         background: rgba(255, 255, 255, 0.85);
@@ -908,4 +894,13 @@ section::before {
         font-size: 18px;
         padding: 12px;
     }
+}
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
