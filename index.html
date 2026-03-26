@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria | Property Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/image/VSA Logo Wide.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#home" class="nav-brand">
+                <img src="assets/image/Victoria_logo-removebg-preview copy.png" alt="VSA Logo">
+            </a>
+
+            <div class="desktop-links">
+                <a href="#home">Home</a>
+                <a href="#project">Project</a>
+                <a href="#model">Model</a>
+            </div>
+
+            <div class="burger-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDE NAV -->
+    <div id="sideNav" class="side-nav">
+        <div class="side-nav-links">
+            <a href="#home">Home</a>
+            <a href="#project">Project</a>
+            <a href="#model">Model</a>
+        </div>
+    </div>
+
+    <section id="home">
+        <img src="assets/image/model-house.png" alt="Background" class="bg-image">
+
+        <div class="hero-container" data-aos="fade-up">
+            <h1>Find Properties <br>That Make You <br>Money </h1>
+            <p>Exclusive Access: Victoria South of Alabang</p>
+        </div>
+    </section>
+
+    <section id="project" class="file-page">
+        <h2 style="text-align:center; margin-bottom:20px;">Project Documents</h2>
+
+        <div class="model-cards">
+            <div class="luxury-card">
+                <span class="card-icon">🏠</span>
+                <div class="card-main">
+                    <h3>Project Presentation</h3>
+                    <p>Complete Brochure & Lifestyle Gallery</p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="viewFile('assets/documents/VSA-PRESENTATION.pdf')">View</button>
+                    <button onclick="downloadFile('assets/documents/VSA-PRESENTATION.pdf')">Download</button>
+                </div>
+            </div>
+
+            <div class="luxury-card">
+                <span class="card-icon">💰</span>
+                <div class="card-main">
+                    <h3>Price List 2026</h3>
+                    <p>Updated Inventory & Payment Terms</p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="viewFile('assets/documents/VICTORIA-PRICELIST-2026.pdf')">View</button>
+                    <button onclick="downloadFile('assets/documents/VICTORIA-PRICELIST-2026.pdf')">Download</button>
+                </div>
+            </div>
+
+            <div class="luxury-card">
+                <span class="card-icon">📄</span>
+                <div class="card-main">
+                    <h3>Investment Calculator</h3>
+                    <p>Amortization & Sample Computations</p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="downloadFile('assets/documents/BLI-COMPUTATION.xlsx')">Download</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="model" class="file-page">
+        <h2 style="text-align:center; margin-bottom:20px;">Our Model Houses</h2>
+
+        <div class="model-cards">
+            <div class="luxury-card">
+                <span class="card-icon">🏡</span>
+                <div class="card-main">
+                    <h3>Aliza</h3>
+                    <p>Modern 3-Bedroom House</p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openGallery('aliza')">View</button>
+                </div>
+            </div>
+
+            <div class="luxury-card">
+                <span class="card-icon">🏡</span>
+                <div class="card-main">
+                    <h3>Samantha</h3>
+                    <p>Luxury 5-Bedroom House</p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openGallery('samantha')">View</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="section-footer">
+            <p>© 2026 Victoria By Breighton Land Inc.</p>
+        </footer>
+    </section>
+    <div id="galleryModal" class="modal" onclick="if(event.target==this) closeGallery()">
+        <div class="modal-content">
+
+            <div id="sliderWrapper" class="slider-wrapper">
+                <div class="model-slide" id="alizaSlides">
+                    <img src="assets/image/aliza2.jpg" class="slide" />
+                    <img src="assets/image/aliza5.jpg" class="slide" />
+                    <img src="assets/image/aliza6.jpg" class="slide" />
+                </div>
+
+                <div class="model-slide" id="samanthaSlides">
+                    <img src="assets/image/samatha.jpg" class="slide" />
+                    <img src="assets/image/samantha2.jpg" class="slide" />
+                    <img src="assets/image/samantha3.jpg" class="slide" />
+                    <img src="assets/image/samantha4.jpg" class="slide" />
+                </div>
+
+                <a class="prev" onclick="prevSlide()">&#10094;</a>
+                <a class="next" onclick="nextSlide()">&#10095;</a>
+            </div>
+
+            <div id="sliderDots" class="slider-dots"></div>
+        </div>
+    </div>
+
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <div id="fileModal" class="modal" onclick="if(event.target==this) closeModal()">
+        <div class="modal-content">
+            <iframe id="fileViewer"></iframe>
+        </div>
+    </div>
+    <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+
+</html>
