@@ -102,32 +102,19 @@ function viewFile(filePath) {
     if (container) {
         container.innerHTML = ''; 
 
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        // Ensure to create absolute URL for Google Docs Viewer
         const fullUrl = new URL(filePath, window.location.href).href;
-        // Don't use google docs viewer if it's localhost
-        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         
-        if (isMobile && filePath.toLowerCase().endsWith('.pdf') && !isLocalhost) {
-            // Use Google Docs viewer for mobile PDFs hosted online
-            container.style.overflow = 'auto';
-            container.style.WebkitOverflowScrolling = 'touch';
+        if (filePath.toLowerCase().endsWith('.pdf')) {
+            // Provide our local PDF.js viewer instead of Google Docs/Embed to handle large files reliably
+            container.style.overflow = 'hidden'; // Viewer has its own scroll
             
             const iframe = document.createElement('iframe');
-            iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(fullUrl)}&embedded=true`;
+            // Path must be relative from the index.html calling it or absolute
+            iframe.src = `assets/pdfjs/web/viewer.html?file=${encodeURIComponent(fullUrl)}`;
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             container.appendChild(iframe);
-        } else if (filePath.toLowerCase().endsWith('.pdf')) {
-            // Use <embed> for desktop or local offline PDFs
-            const embed = document.createElement('embed');
-            embed.src = filePath;
-            embed.type = 'application/pdf';
-            embed.style.width = '100%';
-            embed.style.height = '100%';
-            container.appendChild(embed);
         } else {
              // Non-PDF files fallback
             const iframe = document.createElement('iframe');
